@@ -1,8 +1,8 @@
 import sys
 import unittest
-sys.path.append("/mnt/c/Users/dellis/workspace/testci/src")
-sys.path.append("/mnt/c/Users/dellis/workspace/testci/tests")
-from bling.versh import VersionHolder
+sys.path.append("/mnt/c/Users/dellis/workspace/changeversion/src")
+sys.path.append("/mnt/c/Users/dellis/workspace/changeversion/tests")
+from changeversion.versh import VersionHolder
 
 class TestVersionHolder(unittest.TestCase):
     def test_reps_correct_string(self):

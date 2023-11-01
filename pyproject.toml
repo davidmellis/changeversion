@@ -1,12 +1,25 @@
 [project]
-  name="bling"
+  name="changeversion"
   dynamic = ["version"]
+
+[project.scripts]
+changeversion = "changeversion.cmdline:main"
+
+#[options]
+#packages = find:
+#include-package-data = True  
+
+# [tool.setuptools]
+# packages = ['src', 'src.changeversion']
+# package-dir = {"" = "src"}
 
 
 [tool.setuptools.dynamic]
 version = {file = ["VERSION"]}
 
-[tool.setuptools.packages.find]
-where = ["src","tests"]  # list of folders that contain the packages (["."] by default)
+[xtool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+include = ["*.py"]
 exclude = ["*tests*"]  # exclude packages matching these glob patterns (empty by default)
-namespaces = false  
+namespaces = false
+
