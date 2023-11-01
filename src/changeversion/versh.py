@@ -15,6 +15,17 @@ class VersionParts:
         self.parts[type] = val
         return self
 
+    def major(self):
+        return self.parts["major"]
+
+    def minor(self):
+        return self.parts["minor"]
+
+    def micro(self):
+        return self.parts["micro"]
+
+
+
     def to_string(self):
         return str(self.parts["major"]) + "." + str(self.parts["minor"]) + "." + str(self.parts["micro"])
 class VersionHolder:
@@ -31,3 +42,12 @@ class VersionHolder:
 
     def set(self, part, vstr):
         return VersionHolder(self.parts.set(part, vstr).to_string())
+
+    def micro(self):
+        return self.parts.micro()
+
+    def minor(self):
+        return self.parts.minor()
+
+    def major(self):
+        return self.parts.major()

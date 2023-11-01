@@ -1,5 +1,6 @@
 import argparse
 from changeversion.versh import VersionHolder
+from changeversion.gitme import DoGit
 
 class MyAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
@@ -25,6 +26,8 @@ class MyAction(argparse.Action):
 def main():
     print("Running Change Version ####")
 
+    do_git = DoGit()    
+
     file=open("VERSION","r")
     version_number = file.read()
 
@@ -36,8 +39,10 @@ def main():
     parser.add_argument("--minor")
     parser.add_argument("--micro")
     parser.add_argument("--bump")
+    parser.add_argument("--tag", action="store_true")
     args = parser.parse_args()
 
+    new_version = current_version
     if (args.major != None):
         new_version = current_version.set('major', args.major)
     if (args.minor != None):
@@ -46,6 +51,11 @@ def main():
         new_version = current_version.set('micro', args.micro)
     if (args.bump != None):
         new_version = current_version.bump(args.bump)
+    if (args.tag == True):
+        print("I WANT TO TAG " + str(args.tag))
+        do_git.tag_version(new_version)
+    else:
+        print("I DONT WANT TO TAG")
 
     f = open("VERSION", "w")
     f.write(new_version.rep())
@@ -53,3 +63,5 @@ def main():
 
     print("CURRENT_VERSION " + current_version.rep())
     print("NEW_VERSION " + new_version.rep())
+
+main()

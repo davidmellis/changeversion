@@ -2,10 +2,36 @@ from git import Repo, Actor
 from changeversion.versh import VersionHolder
 
 class DoGit:
-    def play(self):
 
+    def tag_version(self, version):
         repo = Repo(".")
+        file=open("VERSION","r")
+        version_number = file.read()
+        repo.create_tag("v" + version.rep(),
+                        message="Bump version to %s" % version_number
+        )
+        build_id = version.micro()
 
+        repo.create_tag("b%s" % build_id,
+                        message="Bump build_id to %s" % build_id
+        )
+ 
+        print("build_id %s" % build_id)
+
+        index = repo.index
+        index.commit("changeversion to v" + version.rep())
+
+        origin = repo.remotes.origin
+        print("PUSHING ...")
+        origin.push()
+        print("DONE PUSHING")
+
+
+
+
+
+    def play(self):
+        repo = Repo(".")
         file=open("VERSION","r")
         version_number = file.read()
 
@@ -36,5 +62,4 @@ class DoGit:
         origin.push()
         print("DONE PUSHING")
 
-DoGit().play()
 
