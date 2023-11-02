@@ -45,23 +45,33 @@ def main():
     new_version = current_version
     if (args.major != None):
         new_version = current_version.set('major', args.major)
+
     if (args.minor != None):
         new_version = current_version.set('minor', args.minor)
+
     if (args.micro != None):
         new_version = current_version.set('micro', args.micro)
+
     if (args.bump != None):
         new_version = current_version.bump(args.bump)
+ 
+    write_version(new_version)
+
+    print("CURRENT_VERSION " + current_version.rep())
+    print("NEW_VERSION " + new_version.rep())
+
     if (args.tag == True):
-        print("I WANT TO TAG " + str(args.tag))
+        print("I WANT TO TAG " + new_version.rep())
         do_git.tag_version(new_version)
     else:
         print("I DONT WANT TO TAG")
 
+
+
+def write_version(version):
     f = open("VERSION", "w")
-    f.write(new_version.rep())
+    f.write(version.rep())
     f.close()
 
-    print("CURRENT_VERSION " + current_version.rep())
-    print("NEW_VERSION " + new_version.rep())
 
 main()

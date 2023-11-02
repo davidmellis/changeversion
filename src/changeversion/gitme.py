@@ -5,10 +5,14 @@ class DoGit:
 
     def tag_version(self, version):
         repo = Repo(".")
-        file=open("VERSION","r")
-        version_number = file.read()
+
+        build_id = version.micro()
+        print("build_id %s" % build_id)
+        index = repo.index
+        index.commit("changeversion to v" + version.rep())
+
         repo.create_tag("v" + version.rep(),
-                        message="Bump version to %s" % version_number
+                        message="Bump version to %s" % version.rep()
         )
         build_id = version.micro()
 
@@ -16,11 +20,6 @@ class DoGit:
                         message="Bump build_id to %s" % build_id
         )
  
-        print("build_id %s" % build_id)
-
-        index = repo.index
-        index.commit("changeversion to v" + version.rep())
-
         origin = repo.remotes.origin
         print("PUSHING ...")
         origin.push()

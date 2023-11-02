@@ -1,21 +1,13 @@
 [project]
   name="changeversion"
-  dynamic = ["version"]
+  dynamic = ["version", "dependencies"]
 
 [project.scripts]
 changeversion = "changeversion.cmdline:main"
 
-#[options]
-#packages = find:
-#include-package-data = True  
-
-# [tool.setuptools]
-# packages = ['src', 'src.changeversion']
-# package-dir = {"" = "src"}
-
-
 [tool.setuptools.dynamic]
 version = {file = ["VERSION"]}
+dependencies = {file = ["requirements.txt"]}
 
 [xtool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
