@@ -73,5 +73,3 @@ def write_version(version):
     f.write(version.rep())
     f.close()
 
-
-main()
