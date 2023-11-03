@@ -12,12 +12,13 @@ jobs:
           sshPassphrase: 'yieks7dry'
       - task: Bash@3
         name: dependencies
+        displayName: install TOX
         inputs:
           targetType: 'inline'
           script: pip install tox pytest-azurepipelines
       - task: Bash@3
         name: tox
-        displayName: 'Run TOX to test and build artifact'
+        displayName: 'Run TOX to test, build and publish artifact'
         inputs:
           targetType: 'inline'  
           workingDirectory: $(Build.Repository.LocalPath)
