@@ -2,27 +2,6 @@ import argparse
 from changeversion.versh import VersionHolder
 from changeversion.gitme import DoGit
 
-class MyAction(argparse.Action):
-    def __call__(self, parser, namespace, values, option_string=None):
-
-        # Set optional arguments to True or False
-        if option_string:
-            attr = True if values else False
-            setattr(namespace, self.dest, attr)
-
-        # Modify value of "input" in the namespace
-        if hasattr(namespace, 'input'):
-            current_values = getattr(namespace, 'input')
-            try:
-                current_values.extend(values)
-            except AttributeError:
-                current_values = values
-            finally:
-                setattr(namespace, 'input', current_values)
-        else:
-            setattr(namespace, 'input', values)
-
-
 def main():
     print("Running Change Version ####")
 

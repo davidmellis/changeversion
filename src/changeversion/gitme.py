@@ -9,10 +9,11 @@ class DoGit:
         build_id = version.micro()
         print("build_id %s" % build_id)
         index = repo.index
+        index.add("VERSION")
         index.commit("changeversion to v" + version.rep())
 
         repo.create_tag("v" + version.rep(),
-                        message="Bump version to %s" % version.rep()
+                        message="Change version to %s" % version.rep()
         )
         build_id = version.micro()
 

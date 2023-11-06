@@ -1,3 +1,4 @@
+import sys
 import requests
 from requests.auth import HTTPBasicAuth
 from distutils.version import LooseVersion
@@ -9,4 +10,4 @@ def versions(package_name, limit_releases=1000):
     versions.sort(key=LooseVersion, reverse=True)
     return versions[:limit_releases]
 
-print("\n".join(versions("changeversion")))
+print("\n".join(versions(sys.argv[1])))
