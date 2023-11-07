@@ -51,3 +51,18 @@ class VersionHolder:
 
     def major(self):
         return self.parts.major()
+
+
+class Vershion:
+    @classmethod
+    def read(cls, file="VERSION"):
+        file=open("VERSION","r")
+        version_number = file.read()
+        return VersionHolder(version_number)
+
+    @classmethod
+    def write(cls, version, file="VERSION"):
+        f = open(file, "w")
+        f.write(version.rep())
+        f.close()
+

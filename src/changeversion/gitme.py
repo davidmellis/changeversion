@@ -1,5 +1,5 @@
 from git import Repo, Actor
-from changeversion.versh import VersionHolder
+from changeversion.versh import VersionHolder, Vershion
 
 class DoGit:
 
@@ -10,7 +10,8 @@ class DoGit:
         print("build_id %s" % build_id)
         index = repo.index
         index.add("VERSION")
-        index.commit("changeversion to v" + version.rep())
+        commit = index.commit("changeversion to v" + version.rep())
+        print("COMMITTED NEW VERSION " + version.rep())
 
         repo.create_tag("v" + version.rep(),
                         message="Change version to %s" % version.rep()
@@ -20,46 +21,37 @@ class DoGit:
         repo.create_tag("b%s" % build_id,
                         message="Bump build_id to %s" % build_id
         )
- 
-        origin = repo.remotes.origin
-        print("PUSHING ...")
-        origin.push()
-        print("DONE PUSHING")
+
+        try:
+            origin = repo.remote(name='origin')
+#           origin = repo.remotes.origin
+            print("PUSHING ...")
+            origin.push()
+            print("DONE PUSHING")
+        except:
+            print("PUSH FAILED")
 
 
 
+    #   origin = repo.remotes.origin
+     #  print("PUSHING ...")
+       # origin.push(progress=progress)
+      # print("DONE PUSHING")
 
+       
+       #try:
+       #     for info in remote.push( progress=progress ):
+            # call info_callback with the push commands info
+       #     info_callback( info )
 
-    def play(self):
-        repo = Repo(".")
-        file=open("VERSION","r")
-        version_number = file.read()
+       # for line in progress.allDroppedLines():
+       #     log.info( line )
 
-        current_version = VersionHolder(version_number)
-        print(current_version.rep())
+       # except GitCommandError:
+       #     for line in progress.allErrorLines():
+       #     log.error( line )
 
-        new_version = current_version.bump('micro')
-        f = open("VERSION", "w")
-        f.write(new_version.rep())
-        f.close()
+       #     raise
 
-        version = new_version
-
-#        repo.create_tag("v" + version,
-#                        message="This is a tag-object pointing to %s" % "new_branch",
-#        )
-        index = repo.index
-        author = Actor("An author", "author@example.com")
-        committer = Actor("A committer", "committer@example.com")
-        # commit by commit message and author and committer
-        index.add('VERSION')
-        index.commit("changeversion to v" + version.rep())
-
-        print("COMMITTED NEW VERSION " + version.rep())
-
-        origin = repo.remotes.origin
-        print("PUSHING ...")
-        origin.push()
-        print("DONE PUSHING")
 
 
