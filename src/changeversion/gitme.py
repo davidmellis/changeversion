@@ -28,8 +28,8 @@ class DoGit:
             print("PUSHING ...")
             origin.push()
             print("DONE PUSHING")
-        except:
-            print("PUSH FAILED")
+        except Exception as error:
+            print("PUSH FAILED " + error)
 
 
 
