@@ -26,18 +26,20 @@ class DoGit:
             origin = repo.remote(name='origin')
 #           origin = repo.remotes.origin
             print("PUSHING ...")
-            origin.push()
+#            origin.push()
             print("DONE PUSHING")
+#        except git.GitCommandError:
+#           print("PUSH FAIL " + str(error))
         except Exception as error:
-            print("PUSH FAILED " + error)
+            print("PUSH FAILED " + str(error))
 
 
+        progress = changeversion.progress.Progress()
 
-    #   origin = repo.remotes.origin
-     #  print("PUSHING ...")
-       # origin.push(progress=progress)
-      # print("DONE PUSHING")
-
+        origin = repo.remotes.origin
+        print("PUSHING ...")
+        origin.push(progress=progress)
+        print("DONE PUSHING")
        
        #try:
        #     for info in remote.push( progress=progress ):
