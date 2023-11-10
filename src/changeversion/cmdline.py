@@ -36,7 +36,7 @@ def main():
 
     print("WRITING NEW VERSION: " + new_version.rep())        
     Vershion.write(new_version)
-    print("DONE WRITING")
+    print("DONE WRITING: " + nwq_version.rep())
 
     if (args.tag == True):
         print("TAGGING " + new_version.rep())
