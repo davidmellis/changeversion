@@ -34,13 +34,19 @@ class DoGit:
             repo.git.status()
             repo.git.checkout("main")
             repo.git.status()
-            #            origin = repo.remote(name='origin')
+            
             origin = repo.remotes.origin
-            print("PUSHING ...")
             origin.push()
+
+
+            #            origin = repo.remote(name='origin')
+            #origin = repo.remotes.origin
+            print("PUSHING ...")
+            #origin.push("main")
+            #repo.git.push('origin', 'HEAD:main')
             print("DONE PUSHING")
-#        except git.GitCommandError:
-#           print("PUSH FAIL " + str(error))
+            #        except git.GitCommandError:
+            #           print("PUSH FAIL " + str(error))
         except Exception as error:
             print("PUSH FAILED " + str(error))
 
