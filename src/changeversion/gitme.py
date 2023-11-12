@@ -1,6 +1,4 @@
 from git import Repo, Actor,RemoteProgress
-from github import Github
-import pygit2
 from git import Repo
 from changeversion.versh import VersionHolder, Vershion
 from changeversion.progress import ProgressIndicator
@@ -33,7 +31,10 @@ class DoGit:
         )
 
         try:
-#            origin = repo.remote(name='origin')
+            repo.git.status()
+            repo.git.checkout("main")
+            repo.git.status()
+            #            origin = repo.remote(name='origin')
             origin = repo.remotes.origin
             print("PUSHING ...")
             origin.push()
@@ -43,16 +44,12 @@ class DoGit:
         except Exception as error:
             print("PUSH FAILED " + str(error))
 
-
         progress = ProgressIndicator()
 
         origin = repo.remotes.origin
         print("PUSHING ...")
         origin.push(progress=progress)
         print("DONE PUSHING") 
-#        print(progress.allErrorLines())
-#        print(progress.allDroppedLines())
-
 
        #try:
        #     for info in remote.push( progress=progress ):
@@ -70,23 +67,4 @@ class DoGit:
 
 
 
-class Progress(RemoteProgress):
-    def __init__( self ):
-        super().__init__()
 
-        self.__all_dropped_lines = []
-
-    def update( self, op_code, cur_count, max_count=None, message='' ):
-        pass
-
-    def line_dropped( self, line ):
-        if line.startswith( 'POST git-upload-pack' ):
-            return
-
-        self.__all_dropped_lines.append( line )
-
-    def allErrorLines( self ):
-        return self.error_lines() + self.__all_dropped_lines
-
-    def allDroppedLines( self ):
-        return self.__all_dropped_lines
