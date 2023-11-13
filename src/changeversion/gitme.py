@@ -12,7 +12,7 @@ class DoGit:
         repo = Repo(".")
         repo.index.add("VERSION")
         repo.index.commit("commitMessage")
-        repo.git.push()
+        #repo.git.push()
 
         build_id = version.micro()
         print("build_id %s" % build_id)
@@ -32,8 +32,8 @@ class DoGit:
 
         try:
             repo.git.status()
-            repo.git.checkout("main")
-            repo.git.status()
+#            repo.git.checkout("main")
+ #           repo.git.status()
             
             origin = repo.remotes.origin
             origin.push()
@@ -54,7 +54,7 @@ class DoGit:
 
         origin = repo.remotes.origin
         print("PUSHING ...")
-        origin.push(progress=progress)
+#        origin.push(progress=progress)
         print("DONE PUSHING") 
 
        #try:
