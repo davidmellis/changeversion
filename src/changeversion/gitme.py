@@ -1,4 +1,4 @@
-from git import Repo, Actor,RemoteProgress
+from git import Repo, Actor,RemoteProgress, GitCommandError
 from git import Repo
 from changeversion.versh import VersionHolder, Vershion
 from changeversion.progress import ProgressIndicator
@@ -31,12 +31,11 @@ class DoGit:
         )
 
         try:
-            repo.git.status()
-#            repo.git.checkout("main")
+ #           repo.git.status()
  #           repo.git.status()
             
-            origin = repo.remotes.origin
-            origin.push()
+  #          origin = repo.remotes.origin
+   #         origin.push()
 
 
             #            origin = repo.remote(name='origin')
@@ -45,8 +44,8 @@ class DoGit:
             #origin.push("main")
             #repo.git.push('origin', 'HEAD:main')
             print("DONE PUSHING")
-            #        except git.GitCommandError:
-            #           print("PUSH FAIL " + str(error))
+        except git.GitCommandError:
+             print("PUSH FAIL " + str(error))
         except Exception as error:
             print("PUSH FAILED " + str(error))
 
