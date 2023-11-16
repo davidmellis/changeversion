@@ -11,14 +11,13 @@ class DoGit:
 
         repo = Repo(".")
         repo.index.add("VERSION")
-        repo.index.commit("commitMessage")
         #repo.git.push()
 
         build_id = version.micro()
         print("build_id %s" % build_id)
         index = repo.index
         index.add("VERSION")
-        commit = index.commit("changeversion to v" + version.rep())
+        commit = index.commit("changeversion to v" + version.rep() + "  ***NO_CI***")
         print("COMMITTED NEW VERSION " + version.rep())
 
         repo.create_tag("v" + version.rep(),
@@ -44,7 +43,7 @@ class DoGit:
             #origin.push("main")
             #repo.git.push('origin', 'HEAD:main')
             print("DONE PUSHING")
-        except git.GitCommandError:
+        except GitCommandError:
              print("PUSH FAIL " + str(error))
         except Exception as error:
             print("PUSH FAILED " + str(error))
