@@ -5,7 +5,6 @@ message = 'Bump version: "{current_version}" → "{new_version}" ***NO_CI***'
 
 # [bumpversion:file:VERSION]
 current_version = "9.0.18"
-path = "pyproject.toml"
 search = "{current_version}"
 replace = "{new_version}"
 
