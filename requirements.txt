@@ -8,4 +8,4 @@ tomli==2.0.1
 tox==4.11.3
 twine==4.0.2
 twine-verify-upload
-bumpversion
+bump-my-version
