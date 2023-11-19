@@ -1,0 +1,11 @@
+[bumpversion]
+commit = false
+tag = false
+message = 'Bump version: "{current_version}" → "{new_version}" ***NO_CI***'
+
+# [bumpversion:file:VERSION]
+
+[[files]]
+path = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
