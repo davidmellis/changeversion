@@ -7,7 +7,6 @@ replace = "{new_version}"
 
 
 # [bumpversion:file:VERSION]
-current_version = "9.0.18"
 # [bumpversion:file:.bumpversion.toml]
 
 
