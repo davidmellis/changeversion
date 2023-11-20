@@ -15,3 +15,5 @@ include = ["*.py"]
 exclude = ["*tests*"]  # exclude packages matching these glob patterns (empty by default)
 namespaces = false
 
+[bumpversion:file:VERSION]
+
