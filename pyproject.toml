@@ -16,4 +16,5 @@ exclude = ["*tests*"]  # exclude packages matching these glob patterns (empty by
 namespaces = false
 
 [bumpversion:file:VERSION]
-
+[bumpversion:files]
+'VERSION'
