@@ -2,9 +2,9 @@ from changeversion.progress import ProgressIndicator
 from changeversion.gitme import DoGit
 from changeversion.versh import VersionHolder, Vershion
 
-gitme = DoGit()
+# gitme = DoGit()
 
-v = VersionHolder("9.0.17")
+# v = VersionHolder("9.0.17")
 
-gitme.tag_version(v)
+# gitme.tag_version(v)
 
