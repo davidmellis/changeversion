@@ -7,6 +7,9 @@ class DoGit:
 
 
     def tag_version(self, version):
+
+        print("TAGGING " + version.rep())
+
         repo = Repo(".")
 
         repo = Repo(".")
@@ -17,10 +20,10 @@ class DoGit:
         print("build_id %s" % build_id)
         index = repo.index
         index.add("VERSION")
-        commit = index.commit("changeversion to v" + version.rep() + "  ***NO_CI***")
+        commit = index.commit("changeversion to v%s" % version.rep() + "  ***NO_CI***")
         print("COMMITTED NEW VERSION " + version.rep())
 
-        repo.create_tag("v" + version.rep(),
+        repo.create_tag("v%s"  % version.rep(),
                         message="Change version to %s" % version.rep()
         )
         build_id = version.micro()
@@ -30,21 +33,15 @@ class DoGit:
         )
 
         try:
- #           repo.git.status()
- #           repo.git.status()
-            
-  #          origin = repo.remotes.origin
-   #         origin.push()
-
-
-            #            origin = repo.remote(name='origin')
+            print("trying ...")
+           #            origin = repo.remote(name='origin')
             #origin = repo.remotes.origin
-            print("PUSHING ...")
+            #print("PUSHING ...")
             #origin.push("main")
             #repo.git.push('origin', 'HEAD:main')
-            print("DONE PUSHING")
+            # print("DONE PUSHING")
         except GitCommandError:
-             print("PUSH FAIL " + str(error))
+            print("PUSH FAIL " + str(error))
         except Exception as error:
             print("PUSH FAILED " + str(error))
 
@@ -69,6 +66,12 @@ class DoGit:
 
        #     raise
 
+    def git_push(self):
+        repo = Repo(".")
+        repo.git.add("VERSION")
+        print("pushing to origin")
 
-
-
+        origin = repo.remotes.origin
+        print("PUSHING ...")
+        origin.push()
+        print("DONE PUSHING") 
