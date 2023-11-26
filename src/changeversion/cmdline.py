@@ -41,6 +41,8 @@ def main():
     if (args.tag == True):
         print("TAGGING " + new_version.rep())
         do_git.tag_version(new_version)
+    if (args.push == True):
+        do_git.git_push()
     else:
         print("I DONT WANT TO TAG")
 
