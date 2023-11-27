@@ -1,7 +1,6 @@
 from git import Repo, Actor,RemoteProgress, GitCommandError
 from git import Repo
 from changeversion.versh import VersionHolder, Vershion
-from changeversion.progress import ProgressIndicator
 
 class DoGit:
 
