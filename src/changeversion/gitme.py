@@ -44,8 +44,6 @@ class DoGit:
         except Exception as error:
             print("PUSH FAILED " + str(error))
 
-        progress = ProgressIndicator()
-
         origin = repo.remotes.origin
         print("PUSHING ...")
 #        origin.push(progress=progress)
