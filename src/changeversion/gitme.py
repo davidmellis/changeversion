@@ -69,7 +69,9 @@ class DoGit:
         print("pushing to origin")
 
         origin = repo.remotes.origin
-        origin.pull("main")
+        print("PULLING")
+        origin.pull(rebase=True)
+        print("DONE PULLING")
         print("PUSHING ...")
-        origin.push("main")
+        origin.push()
         print("DONE PUSHING") 
