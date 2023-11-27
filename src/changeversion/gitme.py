@@ -65,6 +65,7 @@ class DoGit:
 
     def git_push(self):
         repo = Repo(".")
+        repo.config_writer().set_value('push', 'followTags', 'true').release()
         repo.git.add("VERSION")
         print("pushing to origin")
 
@@ -73,5 +74,5 @@ class DoGit:
         origin.pull(rebase=True)
         print("DONE PULLING")
         print("PUSHING ...")
-        origin.push()
+        origin.push("--tags",)
         print("DONE PUSHING") 
