@@ -68,7 +68,7 @@ class DoGit:
         repo.config_writer().set_value('push', 'followTags', 'true').release()
 
         repo.config_writer().set_value("user", "name", "davidmellis").release()
-        repo.config_writer().set_value("user", "email", "david.ellis@iontgroup.com").release()
+        repo.config_writer().set_value("user", "email", "david.ellis@iongroup.com").release()
 
         repo.config_writer().set_value('push', 'followTags', 'true').release()
         repo.git.add("VERSION")
