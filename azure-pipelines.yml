@@ -11,6 +11,12 @@ jobs:
           sshKeySecureFile: 'ssh_private'
           sshPassphrase: 'yieks7dry'
       - task: Bash@3
+        name: ssh test
+        inputs:
+          targetType: 'inline'
+          script:
+            bash tag_and_push.sh
+      - task: Bash@3
         name: dependencies
         displayName: install TOX
         inputs:
