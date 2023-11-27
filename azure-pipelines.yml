@@ -18,7 +18,7 @@ jobs:
           script: pip install tox pytest-azurepipelines
       - task: Bash@3
         name: tox
-        displayName: 'Run TOX to test, build and publish artifact'
+        displayName: 'TOX versions,tests,builds and publishes the artifact'
         inputs:
           targetType: 'inline'  
           workingDirectory: $(Build.Repository.LocalPath)
