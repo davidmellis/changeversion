@@ -11,7 +11,7 @@ jobs:
           sshKeySecureFile: 'ssh_private'
           sshPassphrase: 'yieks7dry'
       - task: Bash@3
-        name: ssh test
+        name: sshtest
         inputs:
           targetType: 'inline'
           script:
