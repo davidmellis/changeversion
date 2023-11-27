@@ -74,5 +74,5 @@ class DoGit:
         origin.pull(rebase=True)
         print("DONE PULLING")
         print("PUSHING ...")
-        origin.push("--tags",)
+        origin.push()
         print("DONE PUSHING") 
