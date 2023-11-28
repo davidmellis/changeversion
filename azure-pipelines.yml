@@ -10,7 +10,7 @@ jobs:
           sshPublicKey: '$(id_rsa.pub)'
           sshKeySecureFile: 'id_rsa'
           sshPassphrase: 'yieks7dry'
-     - task: Bash@3
+      - task: Bash@3
         name: dependencies
         displayName: Install Dependencies
         inputs:
