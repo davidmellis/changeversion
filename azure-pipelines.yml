@@ -15,7 +15,7 @@ jobs:
         displayName: debug
         inputs:
           targetType: 'inline'
-          script: echo $(id_rsa)
+          script: cat $(id_rsa)
       - task: Bash@3
         name: dependencies
         displayName: install TOX
