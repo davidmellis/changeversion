@@ -10,15 +10,9 @@ jobs:
           sshPublicKey: '$(id_rsa.pub)'
           sshKeySecureFile: 'id_rsa'
           sshPassphrase: 'yieks7dry'
-      - task: Bash@3
-        name: debug
-        displayName: debug
-        inputs:
-          targetType: 'inline'
-          script: cat $(id_rsa)
-      - task: Bash@3
+     - task: Bash@3
         name: dependencies
-        displayName: install TOX
+        displayName: Install Dependencies
         inputs:
           targetType: 'inline'
           script: pip install tox pytest-azurepipelines
