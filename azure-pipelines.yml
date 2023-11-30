@@ -25,7 +25,7 @@ jobs:
           targetType: 'inline'
           script: pip install tox pytest-azurepipelines
       - task: Bash@3
-        name: tox
+        name: install_deps
         displayName: 'TOX versions,tests,builds and publishes the artifact'
         inputs:
           targetType: 'inline'  
