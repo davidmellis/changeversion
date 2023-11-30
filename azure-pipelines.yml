@@ -11,8 +11,6 @@ jobs:
           sshKeySecureFile: 'id_rsa'
           sshPassphrase: 'yieks7dry'
       - task: Bash@3
-        name: tox
-      - task: Bash@3
         name: dependencies
         displayName: Install Dependencies
         inputs:
