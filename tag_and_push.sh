@@ -18,7 +18,8 @@ python src/changeversion/new_version_x.py
 git add .
 git add VERSION
 git status                  
-git pull --rebase origin main
+# git pull --rebase origin main
+git pull -v --rebase -- origin
 git push --tags  -u origin HEAD:main
 
 git log -n3
