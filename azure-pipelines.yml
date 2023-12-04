@@ -13,7 +13,9 @@ jobs:
       - task: Bash@3
         inputs:
           targetType: 'inline'
-          script: 'python src/changeversion/new_version.py' 
+          script: 
+            'pip install gitpython'
+            'python src/changeversion/new_version.py' 
       - task: Bash@3
         name: dependencies
         displayName: Install Dependencies
