@@ -11,6 +11,10 @@ jobs:
           sshKeySecureFile: 'id_rsa'
           sshPassphrase: 'yieks7dry'
       - task: Bash@3
+        inputs:
+          targetType: 'inline'
+          script: 'ssh-add -l' 
+      - task: Bash@3
         name: dependencies
         displayName: Install Dependencies
         inputs:
