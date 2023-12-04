@@ -22,7 +22,7 @@ jobs:
           targetType: 'inline'
           script: 
             'python src/changeversion/new_version.py' 
-     - task: Bash@3
+      - task: Bash@3
         name: toxic
         displayName: 'TOX'
         inputs:
