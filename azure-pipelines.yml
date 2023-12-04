@@ -1,7 +1,6 @@
 ---
 variables:
   PYTHONPATH: src:$(env:PYTHONPATH)
-  $env:SAUCE_USERNAME
 
 jobs:
   - job: Build_And_Test
