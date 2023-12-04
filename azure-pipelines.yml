@@ -28,7 +28,8 @@ jobs:
                   git config --global --add safe.directory '*'
                   git config --global user.email "david.ellis@iongroup.com"
                   git config --global user.name "davidmellis"
-                  python src/changeversion/new_version.py
+                  python src/changeversion/new_version_x.py
+                  bash tag_and_push.sh
       - task: Bash@3
         name: toxic
         displayName: 'TOX'
