@@ -23,8 +23,10 @@ jobs:
         displayName: 'Update Version'
         inputs:
           targetType: 'inline'
-          script: 
-            'python src/changeversion/new_version.py' 
+          script:  |
+                  git config --global user.email "david.ellis@iongroup.com"
+                  git config --global user.name "davidmellis"
+            python src/changeversion/new_version.py
       - task: Bash@3
         name: toxic
         displayName: 'TOX'
