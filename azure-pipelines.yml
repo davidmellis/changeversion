@@ -10,14 +10,14 @@ jobs:
           sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC19tGzVZAYRphXl90lV5/IY4bRTOpOSV04Zx5hFhTFCctR2aTV8Zzx1gtFiCDdD79Ef62AfH4J0E1eD2+J7Lwap80EdDo29tNorkZWoG4MqFhrBW6ImF+fQLmOI6orneIBL+oFZaeBN17kr1OCRfSmAUZh3B1Cl5xJH+IcJhb7u20K4ZQcSKm5jQ/UYUtxcu5OGcUSxIeD/PQcYkp+8TpUbBYPy27+r9jLaJy2XQYVxUeM/MuagRTSR+qPMvhaoyjgkh18qGnc3VwVyxhpOo3yM+SmNZflcDf1SOoNEcDGcURuBw3hbisqsVKLOaqz/BQfq3YufoKY9RhQ7dvuxeCWqcYomums567WAXDwn/573Bd18Qtry9OadWxBBmQf6G7WqJ7IqhaHbqjqGA+LkX+h6Y1HWVzB+Pi3LIIxXv+IU1GWs88Q7no70M1mH6GysDDSwbmAG932myZZIFicycbUiDw2sL8cCbQQAhLej4FC194DXxPeeUGsVrwH/X5KHgs= david.ellis@iongroup.com'
           sshKeySecureFile: 'id_rsa'
           sshPassphrase: 'yieks7dry'
-     - task: Bash@3
+      - task: Bash@3
         name: dependencies
         displayName: Install Dependencies
         inputs:
           targetType: 'inline'
           script: pip install tox pytest-azurepipelines gitpython
       - task: Bash@3
-        name: install_deps
+        name: toxic
         displayName: 'TOX versions,tests,builds and publishes the artifact'
         inputs:
           targetType: 'inline'  
