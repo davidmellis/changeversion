@@ -17,15 +17,15 @@ jobs:
           targetType: 'inline'
           script: pip install tox pytest-azurepipelines gitpython
       - task: Bash@3
-        name: toxic
-        displayName: 'TOX versions,tests,builds and publishes the artifact'
-        inputs:
-          targetType: 'inline'  
-          workingDirectory: $(Build.Repository.LocalPath)
-          script: tox
-      - task: Bash@3
+        displayName: 'Update Version'
         inputs:
           targetType: 'inline'
           script: 
             'python src/changeversion/new_version.py' 
- 
+     - task: Bash@3
+        name: toxic
+        displayName: 'TOX'
+        inputs:
+          targetType: 'inline'  
+          workingDirectory: $(Build.Repository.LocalPath)
+          script: tox
