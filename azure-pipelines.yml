@@ -1,4 +1,7 @@
 ---
+variables:
+  PYTHONPATH: src:$(PYTHONPATH)
+
 jobs:
   - job: Build_And_Test
     displayName: 'Build, Test and Publish the ***changeversion*** system.'
