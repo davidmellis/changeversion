@@ -17,6 +17,7 @@ def main():
     parser.add_argument("--micro")
     parser.add_argument("--bump")
     parser.add_argument("--tag", action="store_true")
+    parser.add_argument("--push", action="store_true")
     args = parser.parse_args()
 
     new_version = current_version
