@@ -64,5 +64,6 @@ class Vershion:
     def write(cls, version, file="VERSION"):
         f = open(file, "w")
         f.write(version.rep())
+        f.write("\n")
         f.close()
 
