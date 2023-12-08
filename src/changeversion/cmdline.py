@@ -1,6 +1,7 @@
 import argparse
 from changeversion.versh import VersionHolder, Vershion
 from changeversion.gitme import DoGit
+import os
 
 def main():
     print("Running Change Version ####")
@@ -16,11 +17,17 @@ def main():
     parser.add_argument("--minor")
     parser.add_argument("--micro")
     parser.add_argument("--bump")
+    parser.add_argument("--build_id", action="store_true")
     parser.add_argument("--tag", action="store_true")
     parser.add_argument("--push", action="store_true")
     args = parser.parse_args()
 
     new_version = current_version
+
+#    if (args.build_id == True):
+#        new_version = current_version.set('micro', os.environ['BUILD_ID'])
+#        print("**********************************************")
+
     if (args.major != None):
         new_version = current_version.set('major', args.major)
 
@@ -31,6 +38,9 @@ def main():
 
     if (args.bump != None):
         new_version = current_version.bump(args.bump)
+
+    if (args.build_id == True):
+        new_version = current_version.set('micro', os.environ['BUILD_ID'])
 
     print("CURRENT_VERSION " + current_version.rep())
     print("NEW_VERSION " + new_version.rep())
@@ -47,3 +57,5 @@ def main():
     else:
         print("I DONT WANT TO TAG")
 
+
+main()
