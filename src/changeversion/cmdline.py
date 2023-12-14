@@ -56,6 +56,3 @@ def main():
         do_git.git_push()
     else:
         print("I DONT WANT TO TAG")
-
-
-main()
